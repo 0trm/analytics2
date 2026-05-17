@@ -1,0 +1,4 @@
+google-cloud-bigquery>=3.25
+google-analytics-admin>=0.22
+google-analytics-data>=0.18
+pyyaml>=6.0

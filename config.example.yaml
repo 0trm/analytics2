@@ -1,0 +1,12 @@
+gcp:
+  project_id: my-gcp-project
+  region: EU                          # used to build `region-eu`.INFORMATION_SCHEMA
+  credentials_path: ./creds/sa.json   # ignored in CI; CI uses GOOGLE_APPLICATION_CREDENTIALS
+
+ga4:
+  property_id: '123456789'            # numeric, no 'properties/' prefix
+  bq_dataset: analytics_123456789     # the GA4 export dataset under project_id
+
+thresholds:
+  warning: 0.60                       # tile state goes yellow at 60% of cap
+  critical: 0.90                      # tile state goes red at 90% of cap

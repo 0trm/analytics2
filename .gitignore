@@ -1,0 +1,18 @@
+# Per-deployment secrets / config
+config.yaml
+creds/
+*.json.key
+sa.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.python-version
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp

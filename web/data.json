@@ -1,0 +1,695 @@
+{
+  "refreshed_at": "2026-05-16T06:59:44+00:00",
+  "config": {
+    "project_id": "your-gcp-project",
+    "property_id": "123456789",
+    "region": "EU"
+  },
+  "tiles": {
+    "A1": {
+      "headline": {
+        "of 1M cap": "33%",
+        "7d max": "325,675 events",
+        "30d mean": "250,844"
+      },
+      "series": [
+        {
+          "x": "2026-04-17",
+          "y": 312405
+        },
+        {
+          "x": "2026-04-18",
+          "y": 177126
+        },
+        {
+          "x": "2026-04-19",
+          "y": 158425
+        },
+        {
+          "x": "2026-04-20",
+          "y": 344624
+        },
+        {
+          "x": "2026-04-21",
+          "y": 304848
+        },
+        {
+          "x": "2026-04-22",
+          "y": 303196
+        },
+        {
+          "x": "2026-04-23",
+          "y": 289915
+        },
+        {
+          "x": "2026-04-24",
+          "y": 321369
+        },
+        {
+          "x": "2026-04-25",
+          "y": 164878
+        },
+        {
+          "x": "2026-04-26",
+          "y": 164271
+        },
+        {
+          "x": "2026-04-27",
+          "y": 284625
+        },
+        {
+          "x": "2026-04-28",
+          "y": 321442
+        },
+        {
+          "x": "2026-04-29",
+          "y": 257899
+        },
+        {
+          "x": "2026-04-30",
+          "y": 256113
+        },
+        {
+          "x": "2026-05-01",
+          "y": 215885
+        },
+        {
+          "x": "2026-05-02",
+          "y": 144793
+        },
+        {
+          "x": "2026-05-03",
+          "y": 126548
+        },
+        {
+          "x": "2026-05-04",
+          "y": 256446
+        },
+        {
+          "x": "2026-05-05",
+          "y": 268221
+        },
+        {
+          "x": "2026-05-06",
+          "y": 274171
+        },
+        {
+          "x": "2026-05-07",
+          "y": 319951
+        },
+        {
+          "x": "2026-05-08",
+          "y": 312587
+        },
+        {
+          "x": "2026-05-09",
+          "y": 158926
+        },
+        {
+          "x": "2026-05-10",
+          "y": 136108
+        },
+        {
+          "x": "2026-05-11",
+          "y": 270084
+        },
+        {
+          "x": "2026-05-12",
+          "y": 278328
+        },
+        {
+          "x": "2026-05-13",
+          "y": 274799
+        },
+        {
+          "x": "2026-05-14",
+          "y": 325675
+        },
+        {
+          "x": "2026-05-15",
+          "y": 0
+        },
+        {
+          "x": "2026-05-16",
+          "y": 0
+        }
+      ],
+      "state": "green",
+      "source": "SELECT table_id, row_count FROM `your-gcp-project.analytics_123456789.__TABLES__` WHERE STARTS_WITH(table_id, 'events_') ORDER BY table_id DESC"
+    },
+    "A2": {
+      "headline": {
+        "peak": "42%",
+        "tokens / day": "84,000 of 200,000",
+        "tokens / hour": "12,400 of 40,000",
+        "concurrent": "2 of 10"
+      },
+      "series": [
+        {
+          "x": "tokens / day",
+          "y": 42
+        },
+        {
+          "x": "tokens / hour",
+          "y": 31
+        },
+        {
+          "x": "concurrent",
+          "y": 20
+        }
+      ],
+      "indexAxis": "y",
+      "state": "green",
+      "source": "demo-mode synthetic data"
+    },
+    "A3": {
+      "headline": {
+        "peak": "82%",
+        "events (30d)": "87 of 500",
+        "metrics": "1 of 50",
+        "dims": "41 of 50"
+      },
+      "series": [
+        {
+          "x": "events (of 500)",
+          "y": 17.4
+        },
+        {
+          "x": "metrics (of 50)",
+          "y": 2.0
+        },
+        {
+          "x": "dims (of 50)",
+          "y": 82.0
+        }
+      ],
+      "indexAxis": "y",
+      "state": "yellow",
+      "source": "GA4 Admin API: customDimensions.list + customMetrics.list; BQ: COUNT(DISTINCT event_name) over events_* last 30d"
+    },
+    "A4": {
+      "headline": {
+        "of 30 cap": "20%",
+        "key events": "6 of 30"
+      },
+      "state": "green",
+      "source": "GA4 Admin API: properties.keyEvents.list (parent=properties/123456789)"
+    },
+    "A5": {
+      "headline": {
+        "of 100 cap": "18%",
+        "audiences": "18 of 100"
+      },
+      "state": "green",
+      "source": "GA4 Admin API: properties.audiences.list (parent=properties/123456789)"
+    },
+    "B1": {
+      "headline": {
+        "of 1 TiB MTD": "13.9%",
+        "MTD billed": "0.139 TiB",
+        "projected": "0.27 TiB (27%)",
+        "today": "1.54 GiB"
+      },
+      "series": [
+        {
+          "x": "2026-05-01",
+          "y": 4.02
+        },
+        {
+          "x": "2026-05-02",
+          "y": 0.16
+        },
+        {
+          "x": "2026-05-03",
+          "y": 0.55
+        },
+        {
+          "x": "2026-05-04",
+          "y": 6.16
+        },
+        {
+          "x": "2026-05-05",
+          "y": 5.4
+        },
+        {
+          "x": "2026-05-06",
+          "y": 10.61
+        },
+        {
+          "x": "2026-05-07",
+          "y": 4.09
+        },
+        {
+          "x": "2026-05-08",
+          "y": 0.63
+        },
+        {
+          "x": "2026-05-09",
+          "y": 0.08
+        },
+        {
+          "x": "2026-05-10",
+          "y": 0.67
+        },
+        {
+          "x": "2026-05-11",
+          "y": 0.12
+        },
+        {
+          "x": "2026-05-12",
+          "y": 66.61
+        },
+        {
+          "x": "2026-05-13",
+          "y": 9.38
+        },
+        {
+          "x": "2026-05-14",
+          "y": 31.51
+        },
+        {
+          "x": "2026-05-15",
+          "y": 0.78
+        },
+        {
+          "x": "2026-05-16",
+          "y": 1.54
+        }
+      ],
+      "state": "green",
+      "source": "SELECT DATE(creation_time) AS day, COUNT(*) AS jobs, SUM(total_bytes_billed) AS bytes_billed, SUM(IF(cache_hit, 0, total_bytes_billed)) AS bytes_billed_no_cache FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT WHERE creation_time >= TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH) AND job_type = 'QUERY' AND state = 'DONE' GROUP BY day ORDER BY day"
+    },
+    "B2": {
+      "headline": {
+        "of 10 GiB free": "146%",
+        "active": "14.61 GiB",
+        "datasets": "5"
+      },
+      "series": [
+        {
+          "x": "searchconsole",
+          "y": 9.262
+        },
+        {
+          "x": "analytics_123456789",
+          "y": 5.351
+        },
+        {
+          "x": "analytics_reports",
+          "y": 0.0
+        },
+        {
+          "x": "analytics_seed",
+          "y": 0.0
+        },
+        {
+          "x": "postmaster",
+          "y": 0.0
+        }
+      ],
+      "indexAxis": "y",
+      "state": "yellow",
+      "source": "SELECT table_schema AS dataset_id, ROUND(SUM(active_logical_bytes) / POW(1024,3), 3) AS active_gib FROM `region-eu`.INFORMATION_SCHEMA.TABLE_STORAGE WHERE project_id = 'your-gcp-project' GROUP BY dataset_id ORDER BY active_gib DESC"
+    },
+    "B4": {
+      "headline": {
+        "cache hit MTD": "2.0%",
+        "cached jobs": "25 of 1,227"
+      },
+      "series": [
+        {
+          "x": "2026-05-01",
+          "y": 19.2
+        },
+        {
+          "x": "2026-05-02",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-03",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-04",
+          "y": 0.8
+        },
+        {
+          "x": "2026-05-05",
+          "y": 0.7
+        },
+        {
+          "x": "2026-05-06",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-07",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-08",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-09",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-10",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-11",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-12",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-13",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-14",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-15",
+          "y": 0.0
+        },
+        {
+          "x": "2026-05-16",
+          "y": 0.0
+        }
+      ],
+      "chartType": "line",
+      "state": "red",
+      "source": "SELECT DATE(creation_time) AS day, COUNT(*) AS jobs, SUM(IF(cache_hit, 1, 0)) AS cached_jobs FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT WHERE creation_time >= TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH) AND job_type = 'QUERY' AND state = 'DONE' GROUP BY day ORDER BY day"
+    },
+    "C1": {
+      "headline": {
+        "biggest (48h)": "1.64 GiB",
+        "top-10 total": "16.44 GiB",
+        "queries": "top 10 of last 48h"
+      },
+      "table": {
+        "columns": [
+          {
+            "key": "day",
+            "label": "day"
+          },
+          {
+            "key": "time",
+            "label": "time UTC"
+          },
+          {
+            "key": "user",
+            "label": "user"
+          },
+          {
+            "key": "gib",
+            "label": "GiB",
+            "fmt": "gib"
+          },
+          {
+            "key": "cache",
+            "label": "cache"
+          },
+          {
+            "key": "query",
+            "label": "query"
+          },
+          {
+            "key": "job",
+            "label": "job id",
+            "fmt": "mono-short"
+          }
+        ],
+        "rows": [
+          {
+            "day": "2026-05-14",
+            "time": "16:19:29",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT geo.country AS country, COUNT(*) AS detections, ROUND(COUNT(*)*100.0/SUM(COUNT(*)) OVER (), 2) AS share_pct, COUNT(DISTINCT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"use",
+            "job": "bqjob_r68cc24814d91333e_0000019e27493054_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:19:56",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"page_path\") AS page_path, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"page_title\") AS page_title, COUNT(*",
+            "job": "bqjob_r3c9fcca066242b14_0000019e27499a10_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:20:12",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "WITH src AS (SELECT geo.country AS country, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_reason\") AS reason FROM `your-gcp-project.analytics_123456789.events_*",
+            "job": "bqjob_r408313323ba84989_0000019e2749d977_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:20:04",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_signals\") AS detection_signals, COUNT(*) AS detections, COUNT(DISTINCT geo.country) AS countries, COUNT(DISTINCT (SEL",
+            "job": "bqjob_r13aa16ba03b6c014_0000019e2749b96f_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:17:57",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_signals\") AS detection_signals, COUNT(*) AS detections, COUNT(DISTINCT geo.country) AS countries FROM `your-gcp-project",
+            "job": "bqjob_r70dbc14059a4bbc9_0000019e2747cc0c_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:18:02",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_reason\") AS detection_reason, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"user_agent_excerpt\") ",
+            "job": "bqjob_r261122bf32dd08ba_0000019e2747e037_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:19:39",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_reason\") AS detection_reason, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"user_agent_excerpt\") ",
+            "job": "bqjob_r6e6f768c12279979_0000019e27495a3f_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:17:52",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT geo.country AS country, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_reason\") AS detection_reason, COUNT(*) AS detections FROM `your-gcp-project.analyti",
+            "job": "bqjob_r2503c91bb82f54f7_0000019e2747b39e_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:18:28",
+            "user": "analyst@example.com",
+            "gib": 1.644,
+            "cache": "",
+            "query": "SELECT (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"page_path\") AS page_path, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"page_title\") AS page_title, COUNT(*",
+            "job": "bqjob_r537dd7787a2a058b_0000019e2748459b_1"
+          },
+          {
+            "day": "2026-05-14",
+            "time": "16:19:48",
+            "user": "analyst@example.com",
+            "gib": 1.641,
+            "cache": "",
+            "query": "WITH a AS (SELECT PARSE_DATE(\"%Y%m%d\", event_date) AS event_date, (SELECT value.string_value FROM UNNEST(event_params) WHERE key = \"detection_reason\") AS r FROM `your-gcp-project.analytics_3",
+            "job": "bqjob_r6cd3b462389a11fb_0000019e27497bf0_1"
+          }
+        ]
+      },
+      "state": "green",
+      "source": "SELECT DATE(creation_time) AS day, FORMAT_TIME('%H:%M:%S', TIME(creation_time)) AS started_utc, user_email, ROUND(total_bytes_billed / POW(1024,3), 3) AS gib_billed, cache_hit, SUBSTR(REGEXP_REPLACE(query, r'\\s+', ' '), 1, 200) AS query_preview, job_id FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT WHERE creation_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 48 HOUR) AND job_type = 'QUERY' AND state = 'DONE' ORDER BY total_bytes_billed DESC LIMIT 10"
+    },
+    "C2": {
+      "headline": {
+        "distinct tables MTD": "49",
+        "top table": "109.14 GiB attributed",
+        "note": "attribution by repetition, not split"
+      },
+      "table": {
+        "columns": [
+          {
+            "key": "table",
+            "label": "table"
+          },
+          {
+            "key": "gib",
+            "label": "GiB attrib.",
+            "fmt": "gib"
+          },
+          {
+            "key": "jobs",
+            "label": "jobs"
+          }
+        ],
+        "rows": [
+          {
+            "table": "your-gcp-project.analytics_123456789.events_*",
+            "gib": 109.145,
+            "jobs": 248
+          },
+          {
+            "table": "your-gcp-project.analytics_reports.gtm_migration_1to1_daily",
+            "gib": 13.623,
+            "jobs": 401
+          },
+          {
+            "table": "your-gcp-project.analytics_seed.gtm_tag_1to1_pairs",
+            "gib": 13.141,
+            "jobs": 169
+          },
+          {
+            "table": "your-gcp-project.region-eu.INFORMATION_SCHEMA.JOBS_BY_PROJECT",
+            "gib": 1.426,
+            "jobs": 74
+          },
+          {
+            "table": "your-gcp-project.searchconsole.ExportLog",
+            "gib": 0.586,
+            "jobs": 90
+          },
+          {
+            "table": "your-gcp-project.analytics_seed.ga4_event_names",
+            "gib": 0.5,
+            "jobs": 6
+          },
+          {
+            "table": "your-gcp-project.region-eu.INFORMATION_SCHEMA.TABLE_STORAGE",
+            "gib": 0.342,
+            "jobs": 35
+          },
+          {
+            "table": "your-gcp-project.searchconsole.searchdata_site_impression",
+            "gib": 0.242,
+            "jobs": 46
+          },
+          {
+            "table": "your-gcp-project.analytics_reports.ga4_event_weekly_counts",
+            "gib": 0.199,
+            "jobs": 6
+          },
+          {
+            "table": "your-gcp-project.searchconsole.searchdata_url_impression",
+            "gib": 0.146,
+            "jobs": 45
+          }
+        ]
+      },
+      "state": "green",
+      "source": "SELECT CONCAT(t.project_id, '.', t.dataset_id, '.', t.table_id) AS table_ref, ROUND(SUM(j.total_bytes_billed) / POW(1024,3), 3) AS gib_billed_attributed, COUNT(*) AS jobs FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT j, UNNEST(j.referenced_tables) t WHERE j.creation_time >= TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH) AND j.job_type = 'QUERY' AND j.state = 'DONE' GROUP BY table_ref ORDER BY gib_billed_attributed DESC LIMIT 10"
+    },
+    "C3": {
+      "headline": {
+        "users MTD": "4",
+        "top user": "139.16 GiB",
+        "top-10 total": "142.42 GiB"
+      },
+      "table": {
+        "columns": [
+          {
+            "key": "user",
+            "label": "user"
+          },
+          {
+            "key": "gib",
+            "label": "GiB MTD",
+            "fmt": "gib"
+          },
+          {
+            "key": "jobs",
+            "label": "jobs"
+          },
+          {
+            "key": "cache",
+            "label": "cache hit"
+          }
+        ],
+        "rows": [
+          {
+            "user": "analyst@example.com",
+            "gib": 139.157,
+            "jobs": 801,
+            "cache": "3%"
+          },
+          {
+            "user": "analytics2-refresh@your-gcp-project.iam.gserviceaccount.com",
+            "gib": 2.084,
+            "jobs": 128,
+            "cache": "0%"
+          },
+          {
+            "user": "search-console-data-export@system.gserviceaccount.com",
+            "gib": 1.172,
+            "jobs": 300,
+            "cache": "0%"
+          },
+          {
+            "user": "bigquery-api@your-gcp-project.iam.gserviceaccount.com",
+            "gib": 0.01,
+            "jobs": 2,
+            "cache": "0%"
+          }
+        ]
+      },
+      "state": "green",
+      "source": "SELECT user_email, ROUND(SUM(total_bytes_billed) / POW(1024,3), 3) AS gib_billed, COUNT(*) AS jobs, SAFE_DIVIDE(SUM(IF(cache_hit, 1, 0)), COUNT(*)) AS cache_hit_rate FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT WHERE creation_time >= TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH) AND job_type = 'QUERY' AND state = 'DONE' GROUP BY user_email ORDER BY gib_billed DESC LIMIT 10"
+    },
+    "C4": {
+      "headline": {
+        "offenders MTD": "0",
+        "biggest": "0.00 GiB",
+        "total billed": "0.00 GiB"
+      },
+      "table": {
+        "columns": [
+          {
+            "key": "day",
+            "label": "day"
+          },
+          {
+            "key": "user",
+            "label": "user"
+          },
+          {
+            "key": "gib",
+            "label": "GiB",
+            "fmt": "gib"
+          },
+          {
+            "key": "query",
+            "label": "query"
+          },
+          {
+            "key": "job",
+            "label": "job id",
+            "fmt": "mono-short"
+          }
+        ],
+        "rows": []
+      },
+      "state": "green",
+      "source": "SELECT DATE(creation_time) AS day, user_email, ROUND(total_bytes_billed / POW(1024,3), 3) AS gib_billed, SUBSTR(REGEXP_REPLACE(query, r'\\s+', ' '), 1, 200) AS query_preview, job_id FROM `region-eu`.INFORMATION_SCHEMA.JOBS_BY_PROJECT WHERE creation_time >= TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), MONTH) AND job_type = 'QUERY' AND state = 'DONE' AND REGEXP_CONTAINS(query, r'(?i)select\\s+\\*\\s+from\\s+`?[^`]*\\.events_') ORDER BY total_bytes_billed DESC LIMIT 10"
+    }
+  }
+}

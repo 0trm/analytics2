@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>analytics² — GA4 + BigQuery free-tier dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>analytics<sup>2</sup></h1>
+      <p class="tagline">GA4 + BigQuery free-tier limits</p>
+    </div>
+    <div class="meta">
+      <div><span class="label">project</span> <span id="meta-project">…</span></div>
+      <div><span class="label">property</span> <span id="meta-property">…</span></div>
+      <div><span class="label">refreshed</span> <span id="meta-refreshed">…</span></div>
+    </div>
+    <img class="logo" src="./ga4-bq.jpg" alt="GA4 + BigQuery" />
+  </header>
+
+  <main>
+    <section class="panel" id="section-ga4">
+      <h2>GA4</h2>
+      <div class="grid grid-ga4">
+        <article class="tile" data-tile="A1"><h3>Events/day vs 1M cap</h3><div class="body"></div></article>
+        <article class="tile" data-tile="A2"><h3>Data API token quotas</h3><div class="body"></div></article>
+        <article class="tile" data-tile="A3"><h3>Collection config caps</h3><div class="body"></div></article>
+        <article class="tile" data-tile="A4"><h3>Conversions vs 30</h3><div class="body"></div></article>
+        <article class="tile" data-tile="A5"><h3>Audiences vs 100</h3><div class="body"></div></article>
+      </div>
+    </section>
+
+    <section class="panel" id="section-bq">
+      <h2>BigQuery</h2>
+      <div class="grid grid-bq">
+        <article class="tile" data-tile="B1"><h3>Query bytes MTD vs 1 TiB</h3><div class="body"></div></article>
+        <article class="tile" data-tile="B2"><h3>Active storage vs 10 GiB</h3><div class="body"></div></article>
+        <article class="tile" data-tile="B4"><h3>Cache hit rate MTD</h3><div class="body"></div></article>
+      </div>
+    </section>
+
+    <section class="panel" id="section-opt">
+      <h2>Optimizer</h2>
+      <div class="grid grid-opt">
+        <article class="tile" data-tile="C1"><h3>Top 10 queries (48h)</h3><div class="body"></div></article>
+        <article class="tile" data-tile="C2"><h3>Top tables scanned MTD</h3><div class="body"></div></article>
+        <article class="tile" data-tile="C3"><h3>Top users MTD</h3><div class="body"></div></article>
+        <article class="tile" data-tile="C4"><h3><code>SELECT *</code> on <code>events_*</code> detector</h3><div class="body"></div></article>
+      </div>
+    </section>
+
+    <section class="panel" id="section-summary">
+      <h2>Summary</h2>
+      <div class="summary-layout">
+        <table class="summary-table">
+          <thead>
+            <tr><th>Tile</th><th class="state-col">State</th><th>Headline</th></tr>
+          </thead>
+          <tbody id="summary-body"></tbody>
+        </table>
+        <div class="summary-right">
+          <div class="status-panel">
+            <h3 class="status-subhead">Status overview</h3>
+            <div class="status-tally" id="status-tally"></div>
+            <h3 class="status-subhead">Needs attention</h3>
+            <ul class="status-attention" id="status-attention"></ul>
+          </div>
+          <div class="status-panel">
+            <h3 class="status-subhead">Actionable signals — what to do next</h3>
+            <ul class="status-signals" id="status-signals"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© trm&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/0trm/analytics2" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

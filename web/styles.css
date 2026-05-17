@@ -1,0 +1,478 @@
+:root {
+  --bg: #fafaf9;
+  --panel: #ffffff;
+  --tile: #ffffff;
+  --border: #e8e8e3;
+  --text: #18181b;
+  --muted: #71717a;
+  --green: rgba(21, 128, 61, 0.9);
+  --yellow: rgba(161, 98, 7, 0.9);
+  --red: rgba(185, 28, 28, 0.9);
+  --error: #71717a;
+  --accent: rgba(37, 99, 235, 0.85);
+
+  /* Vivid variants used for the summary state dots (pill text colors stay
+     darker for legibility on pastel backgrounds). */
+  --dot-green: rgba(34, 197, 94, 0.9);
+  --dot-yellow: rgba(234, 179, 8, 0.9);
+  --dot-red: rgba(239, 68, 68, 0.9);
+
+  --pill-green-bg: #dcfce7;
+  --pill-yellow-bg: #fef3c7;
+  --pill-red-bg: #fee2e2;
+  --pill-neutral-bg: #f4f4f5;
+
+  --tile-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;   /* equal outer columns => meta is geometrically centered */
+  align-items: flex-end;
+  padding: 18px 28px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.brand h1 sup { font-size: 16px; color: var(--muted); }
+
+.brand .tagline {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;       /* lift 2px off the topbar baseline */
+}
+
+.topbar .logo {
+  height: 35px;
+  width: auto;
+  margin-top: 9px;          /* nudge down from the very top edge */
+  opacity: 0.90;
+  flex-shrink: 0;
+  align-self: flex-start;   /* pin to top so it lines up with the analytics² title */
+  justify-self: end;        /* sit at the right edge of its grid column */
+}
+
+.meta .label {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-size: 10px;
+  margin-right: 4px;
+  opacity: 0.7;
+}
+
+main { padding: 16px 20px 48px; max-width: 1800px; margin: 0 auto; }
+
+.panel { margin-bottom: 0; }
+
+/* Subtle horizontal divider between sibling sections (GA4 / BQ / Opt / Summary). */
+.panel + .panel {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+/* GA4: 4 cols × 2 rows. A1/A2/A3 tall on the left, A4/A5 stacked in col 4.
+   Rows are FIXED (not minmax) so 4-entry headlines can't push tiles taller —
+   surplus content is clipped by .tile { overflow: hidden }. */
+.grid-ga4 {
+  grid-template-columns: 1.4fr 1fr 1fr 0.75fr;
+  grid-template-rows: 135px 135px;
+}
+.grid-ga4 [data-tile="A1"] { grid-area: 1 / 1 / 3 / 2; }
+.grid-ga4 [data-tile="A2"] { grid-area: 1 / 2 / 3 / 3; }
+.grid-ga4 [data-tile="A3"] { grid-area: 1 / 3 / 3 / 4; }
+.grid-ga4 [data-tile="A4"] { grid-area: 1 / 4 / 2 / 5; }
+.grid-ga4 [data-tile="A5"] { grid-area: 2 / 4 / 3 / 5; }
+
+/* BQ: 3 cols × 2 rows. All three tiles tall (each spans both rows). */
+.grid-bq {
+  grid-template-columns: 1.2fr 0.8fr 1.2fr;
+  grid-template-rows: 135px 135px;
+}
+.grid-bq [data-tile="B1"] { grid-area: 1 / 1 / 3 / 2; }
+.grid-bq [data-tile="B2"] { grid-area: 1 / 2 / 3 / 3; }
+.grid-bq [data-tile="B4"] { grid-area: 1 / 3 / 3 / 4; }
+
+/* Optimizer: 12-col grid. C1 full-width on top; C2/C3/C4 share row 2 with
+   widths weighted by table column count (C2 wide, C3 mid, C4 narrow). */
+.grid-opt {
+  grid-template-columns: repeat(12, 1fr);
+}
+.grid-opt [data-tile="C1"] { grid-column: 1 / -1; }
+.grid-opt [data-tile="C2"] { grid-column: 1 / 6; }
+.grid-opt [data-tile="C3"] { grid-column: 6 / 10; }
+.grid-opt [data-tile="C4"] { grid-column: 10 / 13; }
+
+.summary-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.summary-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--tile-shadow);
+}
+
+.status-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: var(--tile-shadow);
+}
+
+.status-tally {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tally-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.tally-n {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.tally-n.green  { color: var(--dot-green); }
+.tally-n.yellow { color: var(--dot-yellow); }
+.tally-n.red    { color: var(--dot-red); }
+
+.tally-label {
+  margin-top: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+.status-subhead {
+  margin: 0 0 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.status-attention {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.status-attention li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+.status-attention li:first-child { border-top: none; padding-top: 4px; }
+
+.status-attention .att-id { font-weight: 600; min-width: 28px; }
+.status-attention .att-name { color: var(--muted); flex: 1; }
+.status-attention .att-headline { font-variant-numeric: tabular-nums; }
+.status-attention .att-empty { color: var(--muted); font-style: italic; padding: 4px 0; }
+
+.status-signals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.status-signals li {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+.status-signals li:first-child { border-top: none; padding-top: 4px; }
+
+.status-signals .sig-id { font-weight: 600; }
+.status-signals .sig-action { color: var(--text); line-height: 1.4; }
+.status-signals .sig-empty { color: var(--muted); font-style: italic; padding: 4px 0; grid-column: 1 / -1; }
+
+.summary-table th,
+.summary-table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.summary-table thead th {
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.summary-table tbody tr:last-child td { border-bottom: none; }
+
+.summary-table .state-col { width: 60px; text-align: center; }
+.summary-table .summary-name { color: var(--muted); margin-left: 4px; }
+
+.state-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--muted);
+  vertical-align: middle;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+}
+
+.state-dot.green  { background: var(--dot-green); }
+.state-dot.yellow { background: var(--dot-yellow); }
+.state-dot.red    { background: var(--dot-red); }
+.state-dot.error,
+.state-dot.empty  { background: var(--muted); }
+
+.tile {
+  background: var(--tile);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  position: relative;
+  box-shadow: var(--tile-shadow);
+  /* overflow stays visible so the hover tooltip on h3 can escape the tile. */
+}
+
+.tile h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  position: relative;       /* anchor for the hover tooltip */
+  display: inline-block;    /* shrink-wrap so the cursor:help only spans the title */
+}
+
+.tile h3[data-tip] { cursor: help; }
+
+.tile h3[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+  max-width: 80vw;
+  padding: 7px 10px;
+  background: #18181b;
+  color: #fafaf9;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  z-index: 50;
+  pointer-events: none;
+}
+
+.tile h3[data-tip]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 14px;
+  border: 6px solid transparent;
+  border-top-color: #18181b;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.tile h3 code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.tile-code {
+  color: var(--muted);
+  font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.04em;
+  margin-right: 6px;
+}
+
+.csv-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font: 500 11px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 2px 0;
+  cursor: pointer;
+  margin: 2px 0;
+}
+.csv-btn:hover { text-decoration: underline; }
+
+.tile .body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tile .headline {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.tile .headline .unit {
+  color: var(--muted);
+  font-size: 12px;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.tile .sub {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile .sub .sub-key { text-transform: lowercase; opacity: 0.8; }
+.tile .sub .sub-sep { margin: 0 6px; opacity: 0.5; }
+
+.tile .pill {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: var(--pill-neutral-bg);
+  color: var(--muted);
+}
+
+.tile .pill.green  { background: var(--pill-green-bg);  color: var(--green); }
+.tile .pill.yellow { background: var(--pill-yellow-bg); color: var(--yellow); }
+.tile .pill.red    { background: var(--pill-red-bg);    color: var(--red); }
+.tile .pill.error  { background: var(--pill-neutral-bg); color: var(--error); }
+
+/* Chart.js v4 needs a sized parent. Two modes:
+   - .chart-fill: flex-grows to fill the tile body (used for x-axis charts,
+     so vertical bars / lines use the full tile height).
+   - default: app.js sets explicit pixel height inline (used for horizontal
+     bar charts where height should scale with bar count). */
+.tile .chart-wrap { position: relative; width: 100%; }
+.tile .chart-wrap.chart-fill { flex: 1; min-height: 50px; }
+.tile canvas { width: 100% !important; height: 100% !important; }
+
+.tile table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.tile table th, .tile table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.tile table th { color: var(--muted); font-weight: 500; font-size: 11px; }
+.tile table td .num { font-variant-numeric: tabular-nums; }
+.tile table td .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--muted); }
+
+.tile .empty, .tile .error {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.tile .error { color: var(--red); font-style: normal; }
+
+footer {
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+}
