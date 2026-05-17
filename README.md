@@ -10,7 +10,7 @@
 
 *Analytics for analytics* – a dashboard for teams running GA4 and BigQuery on the free tier. It answers two questions: *how close am I to each free-tier limit?* and *where is my current usage going, so I can action on it?*
 
-## Preview
+## Screenshot
 
 ![analytics² dashboard](docs/screenshot-dashboard.png)
 
