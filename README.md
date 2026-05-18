@@ -21,7 +21,7 @@ Twelve tiles in three sections – the limit trackers tell you *where you stand*
 | Tile | What it tracks | Why it matters |
 |---|---|---|
 | **GA4** | | |
-| A1 | Events/day vs 1 M cap | Crossing pauses BQ export for the day — prior days never backfilled |
+| A1 | Events/day vs 1 M cap | Crossing pauses BQ export for the day – prior days never backfilled |
 | A2 | Data API token quotas (day / hour / concurrent) | Above the cap, reports return 429s |
 | A3 | Custom dimensions / metrics / distinct events vs 50 / 50 / 500 | New configurations silently rejected when full |
 | A4 | Key events (conversions) vs 30 cap | New key events rejected when full |
@@ -77,7 +77,7 @@ Every morning, the GitHub Action runs `python -m refresh.main` against your conf
 ```
 analytics2/
 ├── refresh/                  # Daily refresh job (Python)
-│   ├── main.py               # Orchestrator — runs every tile fn, writes web/data.json
+│   ├── main.py               # Orchestrator – runs every tile fn, writes web/data.json
 │   ├── bq.py                 # BigQuery tiles (B1, B2, B4, C1–C4) and the GA4 events/day tile (A1)
 │   ├── ga4.py                # GA4 Admin + Data API tiles (A2–A5)
 │   ├── util.py               # Shared helpers (state thresholds, payload shape)
