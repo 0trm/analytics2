@@ -117,8 +117,6 @@ For the scheduled refresh, add two GitHub Actions secrets:
 - `GCP_SA_KEY` – the service account JSON
 - `ANALYTICS2_CONFIG` – the contents of your `config.yaml`
 
-Multiple companies = multiple deployments. One dashboard per `config.yaml` is by design – it keeps the static-page architecture trivial.
-
 ---
 
 ## Built with
