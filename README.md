@@ -8,7 +8,7 @@
   <a href="#use-it-for-your-org">Use it for your org</a>
 </p>
 
-*Analytics for analytics* – a dashboard for teams running GA4 and BigQuery on the free tier. It answers two questions: *how close am I to each free-tier limit?* and *where is my current usage going, so I can action on it?*
+Analytics for analytics – a dashboard for teams running GA4 and BigQuery on the free tier. It answers two questions: *how close am I to each free-tier limit?* and *where is my current usage going, so I can action on it?*
 
 ## Screenshot
 
